@@ -1,5 +1,5 @@
 <nav class="navbar navbar-default">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
@@ -21,20 +21,13 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li>{!! link_to_route('frontend.index', trans('navs.frontend.home')) !!}</li>
-                <li>{!! link_to_route('frontend.macros', trans('navs.frontend.macros')) !!}</li>
+                <li>{!! link_to_route('customers.index', 'Customers')!!}<li>
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ trans('menus.language-picker.language') }}
-                        <span class="caret"></span>
-                    </a>
 
-                    @include('includes.partials.lang')
-                </li>
 
                 <!-- Authentication Links -->
                 @if (Auth::guest())

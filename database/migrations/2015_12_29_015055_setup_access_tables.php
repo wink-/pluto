@@ -17,6 +17,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.roles_table'), function ($table) {
+            $table->engine = 'MYISAM';
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->boolean('all')->default(false);
@@ -31,6 +32,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.assigned_roles_table'), function ($table) {
+            $table->engine = 'MYISAM';
             $table->increments('id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
@@ -50,6 +52,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permissions_table'), function ($table) {
+            $table->engine = 'MYISAM';
             $table->increments('id')->unsigned();
             $table->integer('group_id')->nullable()->unsigned();
             $table->string('name');
@@ -66,6 +69,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permission_group_table'), function ($table) {
+            $table->engine = 'MYISAM';
             $table->increments('id')->unsigned();
             $table->integer('parent_id')->nullable();
             $table->string('name');
@@ -75,6 +79,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permission_role_table'), function ($table) {
+            $table->engine = 'MYISAM';
             $table->increments('id')->unsigned();
             $table->integer('permission_id')->unsigned();
             $table->integer('role_id')->unsigned();
@@ -94,6 +99,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permission_dependencies_table'), function ($table) {
+            $table->engine = 'MYISAM';
             $table->increments('id')->unsigned();
             $table->integer('permission_id')->unsigned();
             $table->integer('dependency_id')->unsigned();
@@ -115,6 +121,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permission_user_table'), function ($table) {
+            $table->engine = 'MYISAM';
             $table->increments('id')->unsigned();
             $table->integer('permission_id')->unsigned();
             $table->integer('user_id')->unsigned();

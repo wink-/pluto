@@ -22,7 +22,7 @@ return [
 	|
 	| The application name for use within the UI of the application
 	*/
-    'name' => 'Laravel 5 Bootstrap',
+    'name' => 'Project Pluto',
 
     /*
     |--------------------------------------------------------------------------
@@ -169,14 +169,19 @@ return [
         /*
          * Third Party Providers
          */
+        
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
-        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,        
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+
+
 
         /*
          * Has to override the Collective\Html\HtmlServiceProvider form singleton

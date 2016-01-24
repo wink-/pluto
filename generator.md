@@ -119,3 +119,7 @@ php artisan crud:generate Customers --fields="CUSTCODE:string, CUSTNAME:string:r
 ```
 php artisan crud:generate Process --fields="PROCNAME:string, DESCRIPT:string:required, MINCOST:double, RoHS:boolean, REACH:boolean, TimeStamp:datetime" --pk=ID --view-path="frontend"
 ```
+### Part
+```
+php artisan crud:generate Parts --fields="PARTNUM:string:required, PROCNAME:string:required, CUSTCODE:string:required, PRICE:double, PRICECODE:string, PARTNAME:string, PROCNUM:string, METHOD:string, CERTREQ:boolean, STRESSRLF:boolean, SPEC:string, MATERIAL:string, PLTHICKMIN:double, PLTHICKMAX:double, SPLREQR:text, SQRAREAPT:double, CUSTWTPC:double, FINISHWTPC:double, COATINGWT:double, HTRTCND:string, NORMLOTSIZ:double, X:double, Y:double, Z:double, MATHICKNSS:double, QUAL1:double, QUAL2:double, QUAL3:double, QUAL4:double, QUAL5:double, QUAL6:double, NOTES:text, OpNotes:text, ImageID:integer, pre_bake_temperature:integer, pre_bake_time:string, embrittlement_bake_temperature:integer, embrittlement_bake_time:string, adhesion_bake_temperature:integer, adhesion_bake_time:string, TimeStamp:datetime" --pk=ID --view-path="frontend"
+```

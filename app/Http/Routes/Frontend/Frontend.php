@@ -10,6 +10,7 @@ Route::get('macros', 'FrontendController@macros')->name('frontend.macros');
 Route::resource('customers', 'CustomersController');
 Route::resource('process', 'ProcessesController');
 Route::resource('processes', 'ProcessesController');
+Route::resource('parts', 'PartsController');
 
 
 /**

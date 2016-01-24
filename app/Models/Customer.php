@@ -45,4 +45,16 @@ class Customer extends Model
     'DEFFREIGHT', 'CONTACT1', 'PHONE1', 'EXTENSION1', 'CONTACT2', 'PHONE2',
     'EXTENSION2', 'FAX', 'EMAIL', 'COD', 'TAXIDEN', 'REMARKS'];
 
+/**
+ *  Relationships
+ */
+
+/**
+ * Get the parts for the customer
+ */
+    public function parts()
+    {
+        return $this->hasMany('App\Models\Part', 'CUSTCODE', 'ID');
+    }    
+
 }

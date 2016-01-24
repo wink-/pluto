@@ -3,6 +3,6 @@ Goal - Working DMR System
 
 What tables do I need to get a dmr system?
 Workorder
--Customer
+-Customer - done barebones 1/24
 -Part
--Process
+-Process - done barebones 1/24

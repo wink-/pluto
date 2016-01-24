@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class Process extends Model
 {
 
     /**
@@ -12,7 +12,7 @@ class Customer extends Model
      *
      * @var string
      */
-    protected $table = 'customer';
+    protected $table = 'process';
 
     /**
      * The database field that is the primary key.
@@ -33,16 +33,13 @@ class Customer extends Model
      *
      * @var array
      */    
-    protected $dates = ['created_at', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at', 'TimeStamp'];
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['CUSTCODE', 'CUSTNAME', 'ADDRESS1', 'ADDRESS2', 'ADDRESS3',
-    'CITY', 'STATE', 'ZIP', 'SHIPTO', 'destination_id', 'SHIPVIA', 'carrier_id',
-    'DEFFREIGHT', 'CONTACT1', 'PHONE1', 'EXTENSION1', 'CONTACT2', 'PHONE2',
-    'EXTENSION2', 'FAX', 'EMAIL', 'COD', 'TAXIDEN', 'REMARKS'];
+    protected $fillable = ['PROCNAME', 'DESCRIPT', 'MINCOST', 'RoHS', 'REACH', 'TimeStamp'];
 
 }

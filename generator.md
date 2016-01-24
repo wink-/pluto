@@ -111,6 +111,11 @@ You can customize the generator's stub files/templates to achieve your need.
 
 ## Custom Generator
 This is where I will work on the lines for the crud generator.
+### Customers
 ```
 php artisan crud:generate Customers --fields="CUSTCODE:string, CUSTNAME:string:required, ADDRESS1:string, ADDRESS2:string, ADDRESS3:string, CITY:string, STATE:string, ZIP:string, SHIPTO:string, destination_id:integer, SHIPVIA:string, carrier_id:integer, DEFFREIGHT:string, CONTACT1:string, PHONE1:string, EXTENSION1:string, CONTACT2:string, PHONE2:string, EXTENSION2:string, FAX:string, EMAIL:string, COD:boolean, TAXIDEN:string, REMARKS:string, TimeStamp:datetime" --pk=ID --view-path="frontend"
+```
+### Processes
+```
+php artisan crud:generate Process --fields="PROCNAME:string, DESCRIPT:string:required, MINCOST:double, RoHS:boolean, REACH:boolean, TimeStamp:datetime" --pk=ID --view-path="frontend"
 ```

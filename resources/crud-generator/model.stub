@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace DummyNamespace\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class DummyClass extends Model
 {
 
     /**
@@ -12,14 +12,14 @@ class Customer extends Model
      *
      * @var string
      */
-    protected $table = 'customer';
+    protected $table = '{{table}}';
 
     /**
      * The database field that is the primary key.
      *
      * @var string
      */
-    protected $primaryKey = 'ID';
+    // protected $primaryKey = '';
 
    /**
      * The database connection used by the model.
@@ -33,16 +33,13 @@ class Customer extends Model
      *
      * @var array
      */    
-    protected $dates = ['created_at', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at']; 
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['CUSTCODE', 'CUSTNAME', 'ADDRESS1', 'ADDRESS2', 'ADDRESS3',
-    'CITY', 'STATE', 'ZIP', 'SHIPTO', 'destination_id', 'SHIPVIA', 'carrier_id',
-    'DEFFREIGHT', 'CONTACT1', 'PHONE1', 'EXTENSION1', 'CONTACT2', 'PHONE2',
-    'EXTENSION2', 'FAX', 'EMAIL', 'COD', 'TAXIDEN', 'REMARKS'];
+    protected $fillable = {{fillable}};
 
 }

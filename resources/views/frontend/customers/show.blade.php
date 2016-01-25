@@ -40,7 +40,7 @@
                     <td>
                         <a href="{{ url('contacts/' . $contact->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
-                        </a> /
+                        </a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['contacts', $contact->id],

@@ -120,6 +120,8 @@ php artisan crud:generate Customers --fields="CUSTCODE:string, CUSTNAME:string:r
 php artisan crud:generate Process --fields="PROCNAME:string, DESCRIPT:string:required, MINCOST:double, RoHS:boolean, REACH:boolean, TimeStamp:datetime" --pk=ID --view-path="frontend"
 ```
 ### Part
+Each part can have many processes.
+Each part has one customer.
 ```
 php artisan crud:generate Parts --fields="PARTNUM:string:required, PROCNAME:string:required, CUSTCODE:string:required, PRICE:double, PRICECODE:string, PARTNAME:string, PROCNUM:string, METHOD:string, CERTREQ:boolean, STRESSRLF:boolean, SPEC:string, MATERIAL:string, PLTHICKMIN:double, PLTHICKMAX:double, SPLREQR:text, SQRAREAPT:double, CUSTWTPC:double, FINISHWTPC:double, COATINGWT:double, HTRTCND:string, NORMLOTSIZ:double, X:double, Y:double, Z:double, MATHICKNSS:double, QUAL1:double, QUAL2:double, QUAL3:double, QUAL4:double, QUAL5:double, QUAL6:double, NOTES:text, OpNotes:text, ImageID:integer, pre_bake_temperature:integer, pre_bake_time:string, embrittlement_bake_temperature:integer, embrittlement_bake_time:string, adhesion_bake_temperature:integer, adhesion_bake_time:string, TimeStamp:datetime" --pk=ID --view-path="frontend"
 ```
@@ -127,4 +129,10 @@ php artisan crud:generate Parts --fields="PARTNUM:string:required, PROCNAME:stri
 Each customer can have many contacts
 ```
 php artisan crud:generate Contacts --fields="first_name:string, last_name:string, customer_id:integer, email:string, phone:string, cell:string, department:string, active:boolean" --view-path="frontend"
+```
+### Workorder
+Each workorder belongs to a customer.
+Each workorder has one part.
+```
+php artisan crud:generate Workorders --fields="PartID:integer, WORKORDR:integer, CUSTCODE:string:required, PARTNUM:string:required, PROCNAME:string:required, PRICE:double, PRICECODE:string, REWORK:boolean, DATERECV:date, DATEREQD:date, SHIPPED:boolean, CUSTPO:string, CUSTPL:string, QTY:double, QTYTYPE:char, QTYSHIP:double, QTYNOTSHIP:double, SFTPL:string, SHIPTO:string, SHIPVIA:string, FREIGHT:string, COD:boolean, STARTED:boolean, COMPLETE:boolean, DATESHIP:datetime, INVOICED:boolean, INVNUMBER:integer, DATEINV:datetime, COST:double, WONOTE:text, STEPNAME1:string, TMANHRS1:double, TOTHOURS1:double, STEPNAME2:string, TMANHRS2:double, TOTHOURS2:double, STEPNAME3:string, TMANHRS3:double, TOTHOURS3:double, TimeStamp:datetime, ImageID:integer, LastEdit:string, HOT:boolean, Priority:integer, CustID:integer" --pk=ID --view-path="frontend"
 ```

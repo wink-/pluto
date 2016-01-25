@@ -9,7 +9,7 @@ use App\Http\Requests;
 use Carbon\Carbon;
 use Session;
 
-class CustomersController extends Controller
+class ContactsController extends Controller
 {
 
     /**
@@ -19,9 +19,9 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate(15);
+        $contacts = Contact::paginate(15);
 
-        return view('frontend.customers.index', compact('customers'));
+        return view('frontend.contacts.index', compact('contacts'));
     }
 
     /**
@@ -31,7 +31,8 @@ class CustomersController extends Controller
      */
     public function create()
     {
-        return view('frontend.customers.create');
+        $customers = Customer::lists('CUSTNAME', 'CUSTCODE');
+        return view('frontend.contacts.create', compact('customers'));
     }
 
     /**
@@ -41,13 +42,12 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['CUSTNAME' => 'required', ]);
+        
+        Contact::create($request->all());
 
-        Customer::create($request->all());
+        Session::flash('flash_message', 'Contact added!');
 
-        Session::flash('flash_message', 'Customer added!');
-
-        return redirect('customers');
+        return redirect('contacts');
     }
 
     /**
@@ -59,8 +59,9 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
-        $customer = Customer::findOrFail($id);
-        return view('frontend.customers.show', compact('customer'));
+        $contact = Contact::findOrFail($id);
+
+        return view('frontend.contacts.show', compact('contact'));
     }
 
     /**
@@ -72,9 +73,9 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::findOrFail($id);
-
-        return view('frontend.customers.edit', compact('customer'));
+        $contact = Contact::findOrFail($id);
+        $customers = Customer::lists('CUSTNAME', 'CUSTCODE');
+        return view('frontend.contacts.edit', compact('contact', 'customers'));
     }
 
     /**
@@ -86,16 +87,13 @@ class CustomersController extends Controller
      */
     public function update($id, Request $request)
     {
-        $this->validate($request, ['CUSTNAME' => 'required', ]);
-
-        $customer = Customer::findOrFail($id);
-        $customer->update($request->all());
-
         
-        Session::flash('flash_message', 'Customer updated!');
- 
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
 
-        return redirect('customers');
+        Session::flash('flash_message', 'Contact updated!');
+
+        return redirect('contacts');
     }
 
     /**
@@ -107,11 +105,11 @@ class CustomersController extends Controller
      */
     public function destroy($id)
     {
-        Customer::destroy($id);
+        Contact::destroy($id);
 
-        Session::flash('flash_message', 'Customer deleted!');
+        Session::flash('flash_message', 'Contact deleted!');
 
-        return redirect('customers');
+        return redirect('contacts');
     }
 
 }

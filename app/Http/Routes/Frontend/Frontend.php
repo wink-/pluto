@@ -11,6 +11,7 @@ Route::resource('customers', 'CustomersController');
 Route::resource('process', 'ProcessesController');
 Route::resource('processes', 'ProcessesController');
 Route::resource('parts', 'PartsController');
+Route::resource('contacts', 'ContactsController');
 
 
 /**

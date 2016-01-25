@@ -12,8 +12,45 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $customer->ID }}</td> <td> {{ $customer->CUSTCODE }} </td><td> {{ $customer->CUSTNAME }} </td><td> {{ $customer->ADDRESS1 }} </td>
+                    <td> {{ $customer->CUSTCODE }} </td>
+                    <td> {{ $customer->CUSTNAME }} </td>
+                    <td> {{ $customer->ADDRESS1 }} </td>
                 </tr>
+            </tbody>    
+        </table>
+    </div>
+
+    <h2>Contacts</h2>
+        <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th><th>Email</th><th>Phone</th><th>Department</th><th>Actions</th>
+                </tr>
+            </thead>
+
+            @foreach($customer->contacts as $contact)
+
+                <tr>
+    
+                    <td><a href="{{ url('contacts', $contact->id) }}">{{ $contact->first_name . ' ' . $contact->last_name }}</a></td>
+                    <td>{{ $contact->email }}</td>
+                    <td>{{ $contact->phone }} {!!$contact->extension > 0 ? ' ext ' . $contact->extension : ''!!}</td>
+                    <td>{{ $contact->department }}</td>
+                    <td>
+                        <a href="{{ url('contacts/' . $contact->id . '/edit') }}">
+                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                        </a> /
+                        {!! Form::open([
+                            'method'=>'DELETE',
+                            'url' => ['contacts', $contact->id],
+                            'style' => 'display:inline'
+                        ]) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::close() !!}
+                    </td>
+                </tr>
+            @endforeach
             </tbody>    
         </table>
     </div>

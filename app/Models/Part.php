@@ -53,11 +53,15 @@ class Part extends Model
  */
 
 /**
+ * Each part belongs to a customer
  * Get the customer that owns the part
+ *
+ * @return \Illuminate\Dataase\Eloquent\Relations\BelongsTo
  */
     public function customer()
     {
-        return $this->belongsTo('App\Models\Customer', 'CUSTCODE', 'ID');
-    }     
+        // The foreign key `customer.CUSTCODE` will map to our local key `part.CUSTCODE`
+        return $this->belongsTo('App\Models\Customer', 'CUSTCODE', 'CUSTCODE');
+    }
 
 }

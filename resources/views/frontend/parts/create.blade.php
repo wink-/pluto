@@ -24,8 +24,7 @@
             <div class="form-group {{ $errors->has('CUSTCODE') ? 'has-error' : ''}}">
                 {!! Form::label('CUSTCODE', 'Custcode: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {{ Form::select('CUSTCODE', $customers, null, ['class' => 'form-control']) }}
-                    {{-- !! Form::text('CUSTCODE', null, ['class' => 'form-control', 'required' => 'required']) !!--}}
+                    {{ Form::select('CUSTCODE', $customers, null, ['class' => 'form-control', 'required' => 'required']) }}
                     {!! $errors->first('CUSTCODE', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

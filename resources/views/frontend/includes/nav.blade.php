@@ -21,6 +21,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li>{!! link_to_route('customers.index', 'Customers')!!}<li>
+                <li>{!! link_to_route('contacts.index', 'Contacts')!!}<li>
                 <li>{!! link_to_route('processes.index', 'Processes')!!}<li>
                 <li>{!! link_to_route('parts.index', 'Parts')!!}<li>
             </ul>

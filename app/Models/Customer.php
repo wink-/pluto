@@ -50,11 +50,27 @@ class Customer extends Model
  */
 
 /**
+ * A customer can have many parts
  * Get the parts for the customer
+ *
+ * @return \Illuminate\Dataase\Eloquent\Relations\HasMany
  */
     public function parts()
     {
-        return $this->hasMany('App\Models\Part', 'CUSTCODE', 'ID');
+        // The foreign key `part.CUSTCODE` has to map to local key `customer.CUSTCODE`
+        return $this->hasMany('App\Models\Part', 'CUSTCODE', 'CUSTCODE');
     }    
+
+/**
+ * A customer can have many contacts
+ * Get the contacts for the customer
+ * 
+ * @return \Illuminate\Dataase\Eloquent\Relations\HasMany
+ */
+    public function contacts()
+    {
+        // The foreign key `contact.customer_id` has to map to local key `customer.CUSTCODE`
+        return $this->hasMany('App\Models\Contact', 'customer_id', 'CUSTCODE');
+    } 
 
 }

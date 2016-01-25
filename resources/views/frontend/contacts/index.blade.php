@@ -2,30 +2,30 @@
 
 @section('content')
 
-    <h1>Customers <a href="{{ url('customers/create') }}" class="btn btn-primary pull-right btn-sm">Add New Customer</a></h1>
+    <h1>Contacts <a href="{{ url('contacts/create') }}" class="btn btn-primary pull-right btn-sm">Add New Contact</a></h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>CUSTCODE</th><th>CUSTNAME</th><th>ADDRESS1</th><th>Actions</th>
+                    <th>S.No</th><th>First Name</th><th>Last Name</th><th>Customer Id</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             {{-- */$x=0;/* --}}
-            @foreach($customers as $customer)
+            @foreach($contacts as $contact)
                 {{-- */$x++;/* --}}
                 <tr>
                     <td>{{ $x }}</td>
-                    <td><a href="{{ url('customers', $customer->ID) }}">{{ $customer->CUSTCODE }}</a></td>
-                    <td>{{ $customer->CUSTNAME }}</td>
-                    <td>{{ $customer->ADDRESS1 }}</td>
+                    <td><a href="{{ url('contacts', $contact->id) }}">{{ $contact->first_name }}</a></td>
+                    <td>{{ $contact->last_name }}</td>
+                    <td>{{ $contact->customer_id }}</td>
                     <td>
-                        <a href="{{ url('customers/' . $customer->ID . '/edit') }}">
+                        <a href="{{ url('contacts/' . $contact->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',
-                            'url' => ['customers', $customer->ID],
+                            'url' => ['contacts', $contact->id],
                             'style' => 'display:inline'
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
@@ -35,7 +35,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $customers->render() !!} </div>
+        <div class="pagination"> {!! $contacts->render() !!} </div>
     </div>
 
 @endsection

@@ -32,10 +32,10 @@
                 {!! Form::label('RoHS', 'RoHS Compliant?: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                                 <div class="checkbox">
-                <label>{!! Form::radio('RoHS', '1') !!} Yes</label>
+                <label>{!! Form::radio('RoHS', '1', true) !!} Yes</label>
             </div>
             <div class="checkbox">
-                <label>{!! Form::radio('RoHS', '0', true) !!} No</label>
+                <label>{!! Form::radio('RoHS', '0') !!} No</label>
             </div>
                     {!! $errors->first('RoHS', '<p class="help-block">:message</p>') !!}
                 </div>
@@ -43,12 +43,12 @@
             <div class="form-group {{ $errors->has('REACH') ? 'has-error' : ''}}">
                 {!! Form::label('REACH', 'REACH Compliant?: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                                <div class="checkbox">
-                <label>{!! Form::radio('REACH', '1') !!} Yes</label>
-            </div>
-            <div class="checkbox">
-                <label>{!! Form::radio('REACH', '0', true) !!} No</label>
-            </div>
+                    <div class="checkbox">
+                        <label>{!! Form::radio('REACH', '1', true) !!} Yes</label>
+                    </div>
+                    <div class="checkbox">
+                        <label>{!! Form::radio('REACH', '0') !!} No</label>
+                    </div>
                     {!! $errors->first('REACH', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>

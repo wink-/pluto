@@ -136,3 +136,7 @@ Each workorder has one part.
 ```
 php artisan crud:generate Workorders --fields="PartID:integer, WORKORDR:integer, CUSTCODE:string:required, PARTNUM:string:required, PROCNAME:string:required, PRICE:double, PRICECODE:string, REWORK:boolean, DATERECV:date, DATEREQD:date, SHIPPED:boolean, CUSTPO:string, CUSTPL:string, QTY:double, QTYTYPE:char, QTYSHIP:double, QTYNOTSHIP:double, SFTPL:string, SHIPTO:string, SHIPVIA:string, FREIGHT:string, COD:boolean, STARTED:boolean, COMPLETE:boolean, DATESHIP:datetime, INVOICED:boolean, INVNUMBER:integer, DATEINV:datetime, COST:double, WONOTE:text, STEPNAME1:string, TMANHRS1:double, TOTHOURS1:double, STEPNAME2:string, TMANHRS2:double, TOTHOURS2:double, STEPNAME3:string, TMANHRS3:double, TOTHOURS3:double, TimeStamp:datetime, ImageID:integer, LastEdit:string, HOT:boolean, Priority:integer, CustID:integer" --pk=ID --view-path="frontend"
 ```
+### Discrepant Material Report
+```
+php artisan crud:generate DiscrepantMaterialReports --fields="workorder:integer, date_of_discrepancy:date, description:text, corrective_action_due_date:date, rejection_type:string, internal_comments:text" --view-path="frontend"
+```

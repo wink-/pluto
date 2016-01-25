@@ -13,6 +13,6 @@ return [
     |
      */
 
-    'path' => base_path('resources/crud-generator/'),
+    'path' => base_path('resources/generator/'),
 
 ];

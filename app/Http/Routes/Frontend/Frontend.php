@@ -13,6 +13,12 @@ Route::resource('processes', 'ProcessesController');
 Route::resource('parts', 'PartsController');
 Route::resource('contacts', 'ContactsController');
 Route::resource('workorders', 'WorkordersController');
+Route::resource('dmrs', 'DiscrepantMaterialReportsController');
+Route::resource('discrepantmaterialreports', 'DiscrepantMaterialReportsController');
+Route::post('dmrs/stage', [
+    'as' => 'dmrs.stage',
+    'uses' => 'DiscrepantMaterialReportsController@createDmrFromWorkorder'
+]);
 
 
 /**

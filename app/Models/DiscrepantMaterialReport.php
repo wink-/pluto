@@ -40,6 +40,12 @@ class DiscrepantMaterialReport extends Model
      *
      * @var array
      */
-    protected $fillable = ['workorder', 'date_of_discrepancy', 'description', 'corrective_action_due_date', 'rejection_type', 'internal_comments'];
+    protected $fillable = ['workorder', 'date_of_discrepancy', 'description', 'corrective_action_due_date',
+     'rejection_type', 'internal_comments', 'customer', 'process', 'part_number', 'path', 'filename', 'mime'];
+
+    public function reportDir()
+    {
+        return 'discrepant_material/reports';
+    }     
 
 }

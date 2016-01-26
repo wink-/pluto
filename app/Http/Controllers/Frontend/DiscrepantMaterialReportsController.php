@@ -2,7 +2,10 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\DiscrepantMaterialReport;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\Models\Workorder;
 use App\Http\Requests;
@@ -56,7 +59,28 @@ class DiscrepantMaterialReportsController extends Controller
     public function store(Request $request)
     {
         
-        DiscrepantMaterialReport::create($request->all());
+        $destinationPath = 'discrepant_material/reports/' . date("Y", time()) .'/';
+
+
+        $dmr = $request->all();
+        
+        if ($request->hasFile('uploaded_file')) {
+            // Set the filename to the workorder_customer_process_time()
+            $filename = $request->workorder .'_' . $request->customer . '_' . 
+                        $request->process . '_' .  time() . '.' . 
+                        $request->file('uploaded_file')->getClientOriginalExtension();
+            // add three attributes to the array
+            $dmr['path'] = $destinationPath;
+            $dmr['filename'] = $filename;
+            $dmr['mime'] = $request->file('uploaded_file')->getClientMimeType();
+
+            // move the file to the proper location with its new name
+            $request->file('uploaded_file')->move($destinationPath, $filename);
+        } 
+
+
+
+        DiscrepantMaterialReport::create($dmr);
 
         Session::flash('flash_message', 'Discrepant Material Report added!');
 

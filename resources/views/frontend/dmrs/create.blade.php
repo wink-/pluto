@@ -5,8 +5,11 @@
 
     <p><b>WO:</b> {{ $workorder->WORKORDR }} <b>CUSTOMER:</b> {{ $workorder->CUSTCODE }} <b>PN:</b> {{ $workorder->PARTNUM }} <b>PROC:</b> {{ $workorder->PROCNAME }} </p>
     <hr/>
-{!! Form::open(['url' => 'discrepantmaterialreports', 'class' => 'form-horizontal']) !!}    
-{!! Form::hidden('workorder', $workorder->WORKORDR, ['class' => 'form-control']) !!}
+{!! Form::open(['url' => 'discrepantmaterialreports', 'files' => true, 'class' => 'form-horizontal']) !!}    
+{!! Form::hidden('workorder', $workorder->WORKORDR) !!}
+{!! Form::hidden('customer', $workorder->CUSTCODE) !!}
+{!! Form::hidden('process', $workorder->PROCNAME) !!}
+{!! Form::hidden('part_number', $workorder->PARTNUM) !!}
 
 <div class="row">
     <div class="form-group-sm">
@@ -50,6 +53,15 @@
         <div class="col-sm-6 col-lg-4">
             {!! Form::label('internal_comments', 'Internal Comments:') !!}
             {!! Form::textarea('internal_comments', null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group-sm">
+        <!-- Internal Comments Field -->
+        <div class="col-sm-6 col-lg-4">
+            {!! Form::label('uploaded_file', 'Customer Report') !!}
+            {!! Form::file('uploaded_file', ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>

@@ -7,7 +7,7 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>ID.</th> <th>CUSTCODE</th><th>CUSTNAME</th><th>ADDRESS1</th>
+                    <th>CUSTCODE</th><th>CUSTNAME</th><th>ADDRESS1</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,10 +33,10 @@
 
                 <tr>
     
-                    <td><a href="{{ url('contacts', $contact->id) }}">{{ $contact->first_name . ' ' . $contact->last_name }}</a></td>
-                    <td>{{ $contact->email }}</td>
-                    <td>{{ $contact->phone }} {!!$contact->extension > 0 ? ' ext ' . $contact->extension : ''!!}</td>
-                    <td>{{ $contact->department }}</td>
+                    <td><a href="{{ url('contacts', $contact->id) }}">{{ $contact->first_name . ' ' . $contact->last_name }} </a></td>
+                    <td> {{ $contact->email }} </td>
+                    <td> {{ $contact->phone }} {!!$contact->extension > 0 ? ' ext ' . $contact->extension : ''!!} </td>
+                    <td> {{ $contact->department }} </td>
                     <td>
                         <a href="{{ url('contacts/' . $contact->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

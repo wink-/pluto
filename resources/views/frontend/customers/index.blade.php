@@ -7,18 +7,18 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>CUSTCODE</th><th>CUSTNAME</th><th>ADDRESS1</th><th>Actions</th>
+                    <th>CUSTCODE</th><th>CUSTNAME</th><th>ADDRESS1</th><th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {{-- */$x=0;/* --}}
+
             @foreach($customers as $customer)
-                {{-- */$x++;/* --}}
+
                 <tr>
-                    <td>{{ $x }}</td>
+
                     <td><a href="{{ url('customers', $customer->ID) }}">{{ $customer->CUSTCODE }}</a></td>
-                    <td>{{ $customer->CUSTNAME }}</td>
-                    <td>{{ $customer->ADDRESS1 }}</td>
+                    <td> {{ $customer->CUSTNAME }} </td>
+                    <td> {{ $customer->ADDRESS1 }} </td>
                     <td>
                         <a href="{{ url('customers/' . $customer->ID . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>
@@ -35,7 +35,7 @@
             @endforeach
             </tbody>
         </table>
-        <div class="pagination"> {!! $customers->render() !!} </div>
+        <div class="pagination"> {!!  $customers->render()  !!} </div>
     </div>
 
 @endsection

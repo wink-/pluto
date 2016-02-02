@@ -58,10 +58,19 @@
 </div>
 <div class="row">
     <div class="form-group-sm">
-        <!-- Internal Comments Field -->
+        <!-- Upload Report -->
         <div class="col-sm-6 col-lg-4">
-            {!! Form::label('uploaded_file', 'Customer Report') !!}
-            {!! Form::file('uploaded_file', ['class' => 'form-control']) !!}
+            {!! Form::label('uploaded_report', 'Customer Report:') !!}
+            {!! Form::file('uploaded_report', ['class' => 'form-control']) !!}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group-sm">
+        <!-- Upload Image -->
+        <div class="col-sm-6 col-lg-4">
+            {!! Form::label('uploaded_image', 'Picture of Discrepancy:') !!}
+            {!! Form::file('uploaded_image', ['class' => 'form-control']) !!}
         </div>
     </div>
 </div>

@@ -24,6 +24,8 @@
                 <li>{!! link_to_route('contacts.index', 'Contacts')!!}<li>
                 <li>{!! link_to_route('processes.index', 'Processes')!!}<li>
                 <li>{!! link_to_route('parts.index', 'Parts')!!}<li>
+                <li>{!! link_to_route('workorders.index', 'Workorders')!!}<li>
+                <li>{!! link_to_route('dmrs.index', 'DMR')!!}<li>
             </ul>
 
             <!-- Right Side Of Navbar -->

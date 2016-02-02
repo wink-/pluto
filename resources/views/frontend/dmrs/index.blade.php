@@ -19,18 +19,33 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>S.No</th><th>Workorder</th><th>Date Of Discrepancy</th><th>Description</th><th>Actions</th>
+                    <th>DMR #</th>
+                    <th>Workorder</th>
+                    <th>Customer</th>
+                    <th>Process</th>
+                    <th>Date Of Discrepancy</th>
+                    <th>Corrective Action Due Date</th>
+                    <th>Type</th>
+                    <th>Report</th>
+                    <th>Picture</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-            {{-- */$x=0;/* --}}
+
             @foreach($dmrs as $dmr)
-                {{-- */$x++;/* --}}
+
                 <tr>
-                    <td>{{ $x }}</td>
-                    <td><a href="{{ url('dmrs', $dmr->id) }}">{{ $dmr->workorder }}</a></td>
-                    <td>{{ $dmr->date_of_discrepancy }}</td>
-                    <td>{{ $dmr->description }}</td>
+
+                    <td><a href="{{ url('dmrs', $dmr->id) }}"> {{ $dmr->id }} </a></td>
+                    <td><a href="{{ url('workorders', $dmr->workorder) }}"> {{ $dmr->workorder }}</a></td>
+                    <td><a href="{{ url('customers', $dmr->customer) }}"> {{ $dmr->customer }}</a></td>
+                    <td> {{ $dmr->process }} </td>                    
+                    <td> {{ $dmr->date_of_discrepancy->toDateString() }} </td>
+                    <td> {{ $dmr->corrective_action_due_date->timestamp <= 0  ? '' : $dmr->corrective_action_due_date->toDateString() }} </td>
+                    <td> {{ $dmr->rejection_type }} </td>
+                    <td><a href="{{isset($dmr->report_filename) ?  $dmr->report_path . $dmr->report_filename : '' }}">{{ isset($dmr->report_filename) ? 'Report' : ''}}</a></td>
+                    <td><a href="{{isset($dmr->image_filename) ?  $dmr->image_path . $dmr->image_filename : '' }}">{{ isset($dmr->image_filename) ? 'Picture' : ''}}</a></td>
                     <td>
                         <a href="{{ url('dmrs/' . $dmr->id . '/edit') }}">
                             <button type="submit" class="btn btn-primary btn-xs">Update</button>

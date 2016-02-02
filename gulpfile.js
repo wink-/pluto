@@ -33,7 +33,8 @@ elixir(function(mix) {
       * Combine pre-processed frontend CSS files
       */
      .styles([
-        'frontend/app.css'
+        'frontend/app.css',
+        'frontend/custom.css'
      ], 'public/css/frontend.css')
 
      /**

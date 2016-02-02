@@ -1,0 +1,12 @@
+/* Remove borders on tables */
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+
+/* Don't print link hrefs */
+@media print {
+  a[href]:after {
+    content: none
+  }
+}

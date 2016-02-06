@@ -23,7 +23,7 @@
                     <td>{{ $workorder->QTY }}</td>
                     <td>
                         <a href="{{ url('workorders/' . $workorder->WORKORDR . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-warning btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',

@@ -1,5 +1,11 @@
 @extends('frontend.layouts.master')
 
+@section('after-styles-end')
+
+    <link href="/dist/css/bootstrap-formhelpers.min.css" rel="stylesheet" media="screen">
+
+@endsection
+
 @section('content')
 
     <h1>Create New Customer</h1>
@@ -7,10 +13,12 @@
 
     {!! Form::open(['url' => 'customers', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('CUSTCODE') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('CUSTCODE') ? 'has-error' : ''}}">
                 {!! Form::label('CUSTCODE', 'Custcode: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('CUSTCODE', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('CUSTCODE', null, 
+                    ['class' => 'form-control', "pattern" => "[A-Z0-9-]{3,5}", "title" => "3 to 5 Capital Letters, Numbers, or -"])
+                    !!}
                     {!! $errors->first('CUSTCODE', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -52,7 +60,8 @@
             <div class="form-group {{ $errors->has('ZIP') ? 'has-error' : ''}}">
                 {!! Form::label('ZIP', 'Zip: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('ZIP', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('ZIP', null,
+                    ['class' => 'form-control', 'minlength' => 5, "pattern" => "[0-9]", "title" => "5 Digits Only"]) !!}
                     {!! $errors->first('ZIP', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>            
@@ -75,7 +84,7 @@
             <div class="form-group {{ $errors->has('PHONE1') ? 'has-error' : ''}}">
                 {!! Form::label('PHONE1', 'Phone1: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('PHONE1', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('PHONE1', null, ['class' => 'form-control bfh-phone', 'data-format' => "ddd-ddd-dddd", 'placeholder' => "###-###-####"]) !!}
                     {!! $errors->first('PHONE1', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -96,7 +105,7 @@
             <div class="form-group {{ $errors->has('PHONE2') ? 'has-error' : ''}}">
                 {!! Form::label('PHONE2', 'Phone2: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('PHONE2', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('PHONE2', null, ['class' => 'form-control bfh-phone', 'data-format' => "ddd-ddd-dddd", 'placeholder' => "###-###-####"]) !!}
                     {!! $errors->first('PHONE2', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -110,14 +119,14 @@
             <div class="form-group {{ $errors->has('FAX') ? 'has-error' : ''}}">
                 {!! Form::label('FAX', 'Fax: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('FAX', null, ['class' => 'form-control']) !!}
+                    {!! Form::text('FAX', null, ['class' => 'form-control bfh-phone', 'data-format' => "ddd-ddd-dddd", 'placeholder' => "###-###-####"]) !!}
                     {!! $errors->first('FAX', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
             <div class="form-group {{ $errors->has('EMAIL') ? 'has-error' : ''}}">
                 {!! Form::label('EMAIL', 'Email: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!! Form::text('EMAIL', null, ['class' => 'form-control']) !!}
+                    {!! Form::email('EMAIL', null, ['class' => 'form-control']) !!}
                     {!! $errors->first('EMAIL', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -163,5 +172,11 @@
             @endforeach
         </ul>
     @endif
+
+@endsection
+
+@section('after-scripts-end')
+
+    <script src="/dist/js/bootstrap-formhelpers.min.js"></script>
 
 @endsection

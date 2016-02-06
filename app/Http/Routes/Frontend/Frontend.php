@@ -6,19 +6,34 @@
 
 
 Route::get('/', 'FrontendController@index')->name('frontend.index');
+
 Route::get('macros', 'FrontendController@macros')->name('frontend.macros');	
+
+// Customers
 Route::resource('customers', 'CustomersController');
+
+// Processes
 Route::resource('process', 'ProcessesController');
 Route::resource('processes', 'ProcessesController');
+
+// Parts
 Route::resource('parts', 'PartsController');
+
+// Contacts
 Route::resource('contacts', 'ContactsController');
+Route::post('contacts/createFromCustomer', [
+	'as' => 'contacts.createFromCustomer',
+	'uses' => 'ContactsController@createFromCustomer']);
+
+// Workorders
 Route::resource('workorders', 'WorkordersController');
+
+// DMR System
 Route::resource('dmrs', 'DiscrepantMaterialReportsController', ['except' => 'create']);
 Route::resource('discrepantmaterialreports', 'DiscrepantMaterialReportsController', ['except' => 'create']);
 Route::post('dmrs/stage', [
     'as' => 'dmrs.stage',
-    'uses' => 'DiscrepantMaterialReportsController@createDmrFromWorkorder'
-]);
+    'uses' => 'DiscrepantMaterialReportsController@createDmrFromWorkorder' ]);
 
 
 /**

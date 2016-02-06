@@ -1,5 +1,7 @@
 @extends('frontend.layouts.master')
 
+
+
 @section('content')
 
     <h1>Customer</h1>
@@ -20,7 +22,18 @@
         </table>
     </div>
 
-    <h2>Contacts</h2>
+        <h2>Contacts
+        {!! Form::open([
+            'method'=>'get',
+            'url' => ['contacts/create'],
+            'style' => 'display:inline'
+        ]) !!}
+        {!! Form::hidden('customer_code', $customer->CUSTCODE) !!}
+        {!! Form::hidden('customer_name', $customer->CUSTNAME) !!}
+        {!! Form::submit('Add New Contact', ['class' => 'btn btn-primary pull-right']) !!}
+        {!! Form::close() !!}
+        </h2>
+
         <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -28,6 +41,7 @@
                     <th>Name</th><th>Email</th><th>Phone</th><th>Department</th><th>Actions</th>
                 </tr>
             </thead>
+            <tbody>
 
             @foreach($customer->contacts as $contact)
 
@@ -39,14 +53,14 @@
                     <td> {{ $contact->department }} </td>
                     <td>
                         <a href="{{ url('contacts/' . $contact->id . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-warning btn-xs">Update</button>
                         </a>
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['contacts', $contact->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>

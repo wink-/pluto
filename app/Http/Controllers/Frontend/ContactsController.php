@@ -13,26 +13,46 @@ class ContactsController extends Controller
 {
 
     /**
+     * Show the form for creating a new contact for a specific customer.
+     *
+     * @return Response
+     */
+    
+    public function createFromCustomer()
+    {
+
+        $customers = Customer::lists('CUSTNAME', 'CUSTCODE');
+        return view('frontend.contacts.create', compact('customers'));
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index()
     {
+        
         $contacts = Contact::paginate(15);
-
         return view('frontend.contacts.index', compact('contacts'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return Response
      */
-    public function create()
+    
+    public function create(Request $request)
     {
+
+
+        $default = $request->customer_code;
         $customers = Customer::lists('CUSTNAME', 'CUSTCODE');
-        return view('frontend.contacts.create', compact('customers'));
+        
+        return view('frontend.contacts.create', compact('customers', 'default'));
     }
 
     /**

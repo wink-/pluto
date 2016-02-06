@@ -7,7 +7,7 @@
 
     {!! Form::open(['url' => 'contacts', 'class' => 'form-horizontal']) !!}
 
-                <div class="form-group {{ $errors->has('first_name') ? 'has-error' : ''}}">
+            <div class="form-group {{ $errors->has('first_name') ? 'has-error' : ''}}">
                 {!! Form::label('first_name', 'First Name: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                     {!! Form::text('first_name', null, ['class' => 'form-control']) !!}
@@ -24,7 +24,7 @@
             <div class="form-group {{ $errors->has('customer_id') ? 'has-error' : ''}}">
                 {!! Form::label('customer_id', 'Customer Id: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
-                    {!!Form::select('customer_id', $customers, null, ['class' => 'form-control'])!!}
+                    {!!Form::select('customer_id', $customers, $default, ['class' => 'form-control'])!!}
                     {!! $errors->first('customer_id', '<p class="help-block">:message</p>') !!}
                 </div>
             </div>
@@ -67,10 +67,10 @@
                 {!! Form::label('active', 'Active: ', ['class' => 'col-sm-3 control-label']) !!}
                 <div class="col-sm-6">
                                 <div class="checkbox">
-                <label>{!! Form::radio('active', '1') !!} Yes</label>
+                <label>{!! Form::radio('active', '1', true) !!} Yes</label>
             </div>
             <div class="checkbox">
-                <label>{!! Form::radio('active', '0', true) !!} No</label>
+                <label>{!! Form::radio('active', '0') !!} No</label>
             </div>
                     {!! $errors->first('active', '<p class="help-block">:message</p>') !!}
                 </div>

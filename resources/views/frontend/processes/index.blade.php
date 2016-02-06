@@ -22,7 +22,7 @@
                     <td>{!!$item->RoHS < 1 ? ' Not RoHS &' : ' RoHS &'!!} {!!$item->REACH < 1 ? ' Not REACH' : ' REACH'!!}</td>
                     <td>
                         <a href="{{ url('processes/' . $item->ID . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-warning btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',

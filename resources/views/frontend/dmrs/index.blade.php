@@ -48,7 +48,7 @@
                     <td><a href="{{isset($dmr->image_filename) ?  $dmr->image_path . $dmr->image_filename : '' }}">{{ isset($dmr->image_filename) ? 'Picture' : ''}}</a></td>
                     <td>
                         <a href="{{ url('dmrs/' . $dmr->id . '/edit') }}">
-                            <button type="submit" class="btn btn-primary btn-xs">Update</button>
+                            <button type="submit" class="btn btn-warning btn-xs">Update</button>
                         </a> /
                         {!! Form::open([
                             'method'=>'DELETE',

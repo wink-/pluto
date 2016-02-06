@@ -20,6 +20,10 @@ elixir(function(mix) {
        'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
        'public/js/vendor/bootstrap'
      )
+     .copy(
+       'node_modules/bootstrap-form-helpers/dist/*',
+       'public/dist/'
+     )
 
      /**
       * Process frontend SCSS stylesheets

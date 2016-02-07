@@ -2,7 +2,12 @@
 
 @section('content')
 
-    <h1>Customers <a href="{{ url('customers/create') }}" class="btn btn-primary pull-right btn-sm">Add New Customer</a></h1>
+    <h1>Customers
+    @permission('create-customers')
+        <a href="{{ url('customers/create') }}" class="btn btn-primary pull-right btn-sm">Add New Customer</a>
+    @endauth
+    </h1>
+    
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
@@ -20,9 +25,12 @@
                     <td> {{ $customer->CUSTNAME }} </td>
                     <td> {{ $customer->ADDRESS1 }} </td>
                     <td>
+                        @permission('create-customers')
                         <a href="{{ url('customers/' . $customer->ID . '/edit') }}">
                             <button type="submit" class="btn btn-warning btn-xs">Update</button>
                         </a> /
+                        @endauth
+                        @role('Administrator')
                         {!! Form::open([
                             'method'=>'DELETE',
                             'url' => ['customers', $customer->ID],
@@ -30,6 +38,7 @@
                         ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
+                        @endauth
                     </td>
                 </tr>
             @endforeach

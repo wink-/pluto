@@ -12,13 +12,20 @@
                 <div class="panel-body">
 
                     {!! Form::open(['url' => 'login', 'class' => 'form-horizontal']) !!}
+                         
+                         <div class="form-group">
+                            {!! Form::label('username', 'Username:', ['class' => 'col-md-4 control-label']) !!}
+                            <div class="col-md-6">
+                                {!! Form::text('username', null, ['class' => 'form-control']) !!}
+                            </div><!--col-md-6-->
+                        </div><!--form-group-->                    
 
-                        <div class="form-group">
+{{--                         <div class="form-group">
                             {!! Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
                                 {!! Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) !!}
                             </div><!--col-md-6-->
-                        </div><!--form-group-->
+                        </div><!--form-group--> --}}
 
                         <div class="form-group">
                             {!! Form::label('password', trans('validation.attributes.frontend.password'), ['class' => 'col-md-4 control-label']) !!}

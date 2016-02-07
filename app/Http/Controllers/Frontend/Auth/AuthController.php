@@ -25,6 +25,14 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/dashboard';
 
+     /**
+     * Auth defaults to $this->email, but it first looks for $this->username
+     *
+     * @var string
+     */   
+    protected $username = 'username';
+
+    
     /**
      * Where to redirect users after they logout
      *

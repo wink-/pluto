@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>Customers
-    @permission('create-customers')
+    @role('Office')
         <a href="{{ url('customers/create') }}" class="btn btn-primary pull-right btn-sm">Add New Customer</a>
     @endauth
     </h1>
@@ -25,7 +25,7 @@
                     <td> {{ $customer->CUSTNAME }} </td>
                     <td> {{ $customer->ADDRESS1 }} </td>
                     <td>
-                        @permission('create-customers')
+                        @role('Office')
                         <a href="{{ url('customers/' . $customer->ID . '/edit') }}">
                             <button type="submit" class="btn btn-warning btn-xs">Update</button>
                         </a> /

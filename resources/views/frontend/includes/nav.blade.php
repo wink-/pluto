@@ -20,12 +20,28 @@
 
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                <li>{!! link_to_route('customers.index', 'Customers')!!}<li>
-                <li>{!! link_to_route('contacts.index', 'Contacts')!!}<li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Customers<span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <li>{!! link_to_route('customers.index', 'View Customers')!!}<li>
+                        @role('Office')
+                            <li>{!! link_to_route('customers.create', 'Create Customer')!!}<li>
+                        @endauth
+                        <li role="separator" class="divider"></li>                        
+                        <li>{!! link_to_route('contacts.index', 'View Contacts')!!}<li>
+                        @role('Office')
+                            <li>{!! link_to_route('contacts.create', 'Create Contact')!!}<li>
+                        @endauth
+                    </ul>
+                </li>
+
                 <li>{!! link_to_route('processes.index', 'Processes')!!}<li>
                 <li>{!! link_to_route('parts.index', 'Parts')!!}<li>
                 <li>{!! link_to_route('workorders.index', 'Workorders')!!}<li>
                 <li>{!! link_to_route('dmrs.index', 'DMR')!!}<li>
+              
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -36,7 +52,7 @@
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li>{!! link_to('login', trans('navs.frontend.login')) !!}</li>
-                    <li>{!! link_to('register', trans('navs.frontend.register')) !!}</li>
+                    {{-- <li>{!! link_to('register', trans('navs.frontend.register')) !!}</li> --}}
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

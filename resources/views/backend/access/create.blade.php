@@ -28,7 +28,12 @@
                         {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.name')]) !!}
                     </div>
                 </div><!--form control-->
-
+                <div class="form-group">
+                    {!! Form::label('username', 'Username:', ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username']) !!}
+                    </div>
+                </div><!--form control-->
                 <div class="form-group">
                     {!! Form::label('email', trans('validation.attributes.backend.access.users.email'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">

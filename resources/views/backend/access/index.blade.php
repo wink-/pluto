@@ -24,15 +24,16 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>{{ trans('labels.backend.access.users.table.id') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.name') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.email') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.other_permissions') }}</th>
-                        <th class="visible-lg">{{ trans('labels.backend.access.users.table.created') }}</th>
-                        <th class="visible-lg">{{ trans('labels.backend.access.users.table.last_updated') }}</th>
-                        <th>{{ trans('labels.general.actions') }}</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Confirmed</th>
+                        <th>Roles</th>
+                        <th>Other Permissions</th>
+                        <th class="visible-lg">Created</th>
+                        <th class="visible-lg">Last Updated</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -40,6 +41,7 @@
                             <tr>
                                 <td>{!! $user->id !!}</td>
                                 <td>{!! $user->name !!}</td>
+                                <td>{!! $user->username !!}</td>
                                 <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
                                 <td>{!! $user->confirmed_label !!}</td>
                                 <td>

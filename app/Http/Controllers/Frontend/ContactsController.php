@@ -1,13 +1,12 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Customer;
-use App\Models\Contact;
-use App\Http\Requests;
-use Carbon\Carbon;
 use Session;
+use App\Http\Requests;
+use App\Models\Contact;
+use App\Models\Customer;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ContactsController extends Controller
 {
@@ -17,7 +16,7 @@ class ContactsController extends Controller
      *
      * @return Response
      */
-    
+
     public function createFromCustomer()
     {
 
@@ -32,11 +31,10 @@ class ContactsController extends Controller
      */
     public function index()
     {
-        
+
         $contacts = Contact::paginate(15);
         return view('frontend.contacts.index', compact('contacts'));
     }
-
 
 
     /**
@@ -44,14 +42,14 @@ class ContactsController extends Controller
      *
      * @return Response
      */
-    
+
     public function create(Request $request)
     {
 
 
         $default = $request->customer_code;
         $customers = Customer::lists('CUSTNAME', 'CUSTCODE');
-        
+
         return view('frontend.contacts.create', compact('customers', 'default'));
     }
 
@@ -62,7 +60,7 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         Contact::create($request->all());
 
         Session::flash('flash_message', 'Contact added!');
@@ -73,7 +71,7 @@ class ContactsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -87,7 +85,7 @@ class ContactsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return Response
      */
@@ -101,34 +99,30 @@ class ContactsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return Response
      */
     public function update($id, Request $request)
     {
-        
+
         $contact = Contact::findOrFail($id);
         $contact->update($request->all());
-
         Session::flash('flash_message', 'Contact updated!');
-
         return redirect('contacts');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      *
      * @return Response
      */
     public function destroy($id)
     {
         Contact::destroy($id);
-
         Session::flash('flash_message', 'Contact deleted!');
-
         return redirect('contacts');
     }
 

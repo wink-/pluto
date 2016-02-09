@@ -2,13 +2,18 @@
 
 @section('content')
 
-    <h1>Contacts <a href="{{ url('contacts/create') }}" class="btn btn-primary pull-right btn-sm">Add New Contact</a></h1>
+    <h1>Contacts <a href="{{ url('contacts/create') }}" class="btn btn-primary pull-right btn-sm">Add New Contact</a>
+    </h1>
     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
-                <tr>
-                    <th>S.No</th><th>First Name</th><th>Last Name</th><th>Customer Id</th><th>Actions</th>
-                </tr>
+            <tr>
+                <th>S.No</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Customer Id</th>
+                <th>Actions</th>
+            </tr>
             </thead>
             <tbody>
             {{-- */$x=0;/* --}}
@@ -28,7 +33,7 @@
                             'url' => ['contacts', $contact->id],
                             'style' => 'display:inline'
                         ]) !!}
-                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>

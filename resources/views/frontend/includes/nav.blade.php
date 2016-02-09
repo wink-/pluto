@@ -26,12 +26,15 @@
                     </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                         <li>{!! link_to_route('customers.index', 'View Customers')!!}<li>
-                        @role(['Administrator', 'Office'])
+                        
+                        @if (access()->hasRole('Administrator', 'Office'))
                             <li>{!! link_to_route('customers.create', 'Create Customer')!!}<li>
-                        @endauth
+                        @endif
+                        
                         <li role="separator" class="divider"></li>                        
                         <li>{!! link_to_route('contacts.index', 'View Contacts')!!}<li>
-                        @role(['Administrator', 'Office'])
+
+                        @roles(['Administrator', 'Office'])
                             <li>{!! link_to_route('contacts.create', 'Create Contact')!!}<li>
                         @endauth
                     </ul>

@@ -12,7 +12,10 @@
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th>CUSTCODE</th><th>CUSTNAME</th><th>ADDRESS1</th><th>Actions</th>
+                    <th>CUSTCODE</th>
+                    <th>CUSTNAME</th>
+                    <th>ADDRESS1</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,20 +28,22 @@
                     <td> {{ $customer->CUSTNAME }} </td>
                     <td> {{ $customer->ADDRESS1 }} </td>
                     <td>
-                        @role('Office')
+                        @roles(['Administrator', 'Office'])
                         <a href="{{ url('customers/' . $customer->ID . '/edit') }}">
                             <button type="submit" class="btn btn-warning btn-xs">Update</button>
                         </a> /
                         @endauth
+
                         @role('Administrator')
-                        {!! Form::open([
-                            'method'=>'DELETE',
-                            'url' => ['customers', $customer->ID],
-                            'style' => 'display:inline'
-                        ]) !!}
+                            {!! Form::open([
+                                'method'=>'DELETE',
+                                'url' => ['customers', $customer->ID],
+                                'style' => 'display:inline'
+                            ]) !!}
                             {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
-                        {!! Form::close() !!}
+                            {!! Form::close() !!}
                         @endauth
+                        
                     </td>
                 </tr>
             @endforeach

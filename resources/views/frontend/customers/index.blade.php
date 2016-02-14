@@ -3,12 +3,23 @@
 @section('content')
 
     <h1>Customers
-    @role('Office')
+    @roles(['Administrator', 'Office'])
         <a href="{{ url('customers/create') }}" class="btn btn-primary pull-right btn-sm">Add New Customer</a>
     @endauth
     </h1>
-    
-    <div class="table">
+ 
+     <table class="table table-bordered table-striped" id="customers-table">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Action</th>                
+            </tr>
+        </thead>
+    </table>
+
+{{--     <div class="table">
         <table class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
@@ -50,6 +61,27 @@
             </tbody>
         </table>
         <div class="pagination"> {!!  $customers->render()  !!} </div>
-    </div>
+    </div> --}}
 
 @endsection
+
+
+@push('scripts')
+<script>
+$(function() {
+    $('#customers-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: '{!! route('customers.data') !!}',
+        columns: [
+            { data: 'CUSTCODE', name: 'CUSTCODE' },
+            { data: 'CUSTNAME', name: 'CUSTNAME' },
+            { data: 'ADDRESS1', name: 'ADDRESS1' },
+            { data: 'action', name: 'action', orderable: false, searchable: false }
+        ],
+        lengthMenu: [[15, 25,  50, -1], [15, 25, 50, "All"]],
+        pageLength: 15
+    });
+});
+</script>
+@endpush

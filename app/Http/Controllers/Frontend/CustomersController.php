@@ -1,16 +1,46 @@
 <?php
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Customer;
-use App\Models\Contact;
-use App\Http\Requests;
-use Carbon\Carbon;
 use Session;
+use Carbon\Carbon;
+use App\Http\Requests;
+use App\Models\Contact;
+use App\Models\Customer;
+use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+use Yajra\Datatables\Html\Builder;
+use App\Http\Controllers\Controller;
+
 
 class CustomersController extends Controller
 {
+
+    /**
+     * Process datatables ajax request.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function anyData()
+    {
+        return Datatables::of(Customer::select('*'))
+        ->addColumn('action', function ($customer) {
+            return
+            '<a href="' . url('customers', $customer->ID) . '"><button type="submit" class="btn btn-info btn-xs">View</button></a>';
+        })        
+        ->make(true);
+    }
+
+    /**
+     * Displays datatables front end view
+     *
+     * @return \Illuminate\View\View
+     */
+    public function getIndex()
+    {
+        return view('frontend.customers.index');
+    }
+
+
 
     /**
      * Display a listing of the resource.

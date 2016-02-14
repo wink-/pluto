@@ -22,7 +22,17 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('profile/update', 'ProfileController@update')->name('frontend.user.profile.update');
     });
 // Customers
+Route::controller('dataTableCustomers', 'CustomersController', [
+    'anyData'  => 'customers.data',
+    'getIndex' => 'customers',
+
+]);
+Route::get('customers/{id}/delete', [
+    'as' => 'customers.delete',
+    'uses' => 'CustomersController@destroy',
+]);
 Route::resource('customers', 'CustomersController');
+
 
 // Processes
 Route::resource('process', 'ProcessesController');

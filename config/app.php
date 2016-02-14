@@ -179,6 +179,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,        
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
 
 
